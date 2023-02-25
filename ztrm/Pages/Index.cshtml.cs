@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ztrm.Pages
 {
-    public class HomeModel : PageModel
+    public class IndexModel : PageModel
     {
-        private readonly ILogger<HomeModel> _logger;
+        private readonly ILogger<IndexModel> _logger;
 
-        public HomeModel(ILogger<HomeModel> logger)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
