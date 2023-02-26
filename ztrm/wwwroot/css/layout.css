@@ -1,0 +1,81 @@
+﻿.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-custom {
+    background-color: #121212;
+    color: white;
+}
+
+
+body {
+    font-family: "Myriad Pro", "Trebuchet MS";
+    font-size: 16pt;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: #282828;
+}
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Footer
+ */
+.footer {
+    background-color: #282828;
+    font-size: 12pt;
+    margin: 20px 0 0 0;
+    padding: 10px;
+    display: flex;
+    color: #b3b3b3;
+}
+
+    #footer h2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    #footer p {
+        margin: 0;
+        text-transform: lowercase;
+    }
+
+    #footer strong {
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+
+.lead {
+    font-weight: bold;
+}
+
+#footer .contact, #footer .about {
+    float: left;
+}
+
+#footer .contact {
+    width: 50%;
+}
+
+#footer .about {
+    width: 50%;
+}

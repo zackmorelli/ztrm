@@ -3,46 +3,82 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ztrm - @ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/CustomSite.css"/>
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/css/layout.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
+<body class="container-fluid body-custom">
     <header>
-        <nav >
-            <div >
-                <ul>
-                    <li>
-                        <a asp-area="" asp-page="/Home">Home</a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Random Thoughts">Random Thoughts</a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Publications">Publications</a>
-                    </li>
-                    <li>
-                </ul>
-            </div>
+        <nav class="nav">
+            <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
+            <a class="nav-link" asp-area="" asp-page="/RandomThoughts">Random Thoughts</a>
+            <a class="nav-link" asp-area="" asp-page="/Publications">Publications</a>
         </nav>
     </header>
 
-    <div >
-        <main >
+    <div>
+        <main>
             @RenderBody()
         </main>
     </div>
 
-    <footer >
-        <div >
-            &copy; 2022 - Zackary T. Morelli - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <footer id="layoutFooter" class="container-fluid footer fixed-bottom">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <span style="margin-left: 15px; margin-bottom: 5px;">This website is powered by:</span>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <img src="/images/aspnetcore.png" alt="ASP.NET logo" />
+                    </div>
+
+                    <div class="col">
+                        <img src="/images/bootstrap-logo-vector.png" alt="Bootstrap logo" />
+                    </div>
+
+                    <div class="col">
+                        <img src="/images/microsoft-sql-server-logo.png" alt="SQL Server logo" />
+                    </div>
+
+                    <div class="col">
+                        <img src="/images/Apache_HTTP_Server-Logo.wine.png" alt="Apache logo" />
+                    </div>
+
+                    <div class="col">
+                        <img src="/images/ubuntu-logo.png" alt="Ubuntu logo" />
+                    </div>
+
+                    <div style="width: 125px; align-self: center;" class="col">
+                        <a href="https://freedns.afraid.org/">Free DNS</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div style="margin-top: 5px;" class="col">
+                        &copy; 2023 - Zackary T. Morelli - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+
         </div>
+
+        
+
+ 
     </footer>
 
-    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @await RenderSectionAsync("Scripts", required: false)*@
+    @*@await RenderSectionAsync("Scripts", required: false)*@
 </body>
 </html>

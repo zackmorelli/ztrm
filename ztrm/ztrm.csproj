@@ -13,6 +13,7 @@
   <ItemGroup>
     <Folder Include="Models\StoredProcedureContainers\" />
     <Folder Include="Services\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>
