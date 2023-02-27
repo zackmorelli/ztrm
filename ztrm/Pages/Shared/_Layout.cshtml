@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
 
+    <!--local CSS stylesheets -->
     <link rel="stylesheet" href="~/css/layout.css"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
 
+    <!--Remote Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
+
+    <!--local JS files -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body class="container-fluid body-custom">
@@ -19,6 +27,9 @@
             <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
             <a class="nav-link" asp-area="" asp-page="/RandomThoughts">Random Thoughts</a>
             <a class="nav-link" asp-area="" asp-page="/Publications">Publications</a>
+            <a class="nav-link" asp-area="" asp-page="/PhysicsMaterial">Physics Material</a>
+            <a class="nav-link" asp-area="" asp-page="/Books">Books</a>
+            <a class="nav-link" asp-area="" asp-page="/AboutMe">About Me</a>
         </nav>
     </header>
 
@@ -35,30 +46,45 @@
                     <span style="margin-left: 15px; margin-bottom: 5px;">This website is powered by:</span>
                 </div>
 
-                <div class="row">
-                    <div class="col">
-                        <img src="/images/aspnetcore.png" alt="ASP.NET logo" />
+                <div style="justify-content: space-around;" class="row">
+                    <div class="flex-row">
+                        <div class="col">
+                            <img src="/images/aspnetcore.png" alt="ASP.NET logo" />
+                        </div>
+
+                        <div class="col">
+                            <img src="/images/bootstrap-logo-vector.png" alt="Bootstrap logo" />
+                        </div>
+
+                        <div class="col">
+                            <img src="/images/microsoft-sql-server-logo.png" alt="SQL Server logo" />
+                        </div>
+
+                        <div class="col">
+                            <img src="/images/Apache_HTTP_Server-Logo.wine.png" alt="Apache logo" />
+                        </div>
+
+                        <div class="col">
+                            <img src="/images/ubuntu-logo.png" alt="Ubuntu logo" />
+                        </div>
+
+                        <div style="width: 125px; align-self: center;" class="col">
+                            <a target="_blank" href="https://freedns.afraid.org/">Free DNS</a>
+                        </div>
                     </div>
 
-                    <div class="col">
-                        <img src="/images/bootstrap-logo-vector.png" alt="Bootstrap logo" />
+                    <div style="align-items: center; border-left: 2px solid #b3b3b3" class="flex-row">
+                        <div style="align-items: center;" class="col flex-row">
+                            <img src="/images/github-logo.png" alt="Github logo"/>
+                            <a style="margin-left: 5px;" target="_blank" href="https://github.com/zackmorelli">Github</a>
+                        </div>
+
+                        <div style="align-items: center;" class="col flex-row">
+                            <img src="/images/linked-in.png" alt="LinkedIn logo" />
+                            <a style="margin-left: 5px; width: 65px;" target="_blank" href="https://www.linkedin.com/in/zackary-morelli-363806143">Linked In</a>
+                        </div>
                     </div>
 
-                    <div class="col">
-                        <img src="/images/microsoft-sql-server-logo.png" alt="SQL Server logo" />
-                    </div>
-
-                    <div class="col">
-                        <img src="/images/Apache_HTTP_Server-Logo.wine.png" alt="Apache logo" />
-                    </div>
-
-                    <div class="col">
-                        <img src="/images/ubuntu-logo.png" alt="Ubuntu logo" />
-                    </div>
-
-                    <div style="width: 125px; align-self: center;" class="col">
-                        <a href="https://freedns.afraid.org/">Free DNS</a>
-                    </div>
                 </div>
 
                 <div class="row">
