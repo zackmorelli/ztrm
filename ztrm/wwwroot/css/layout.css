@@ -1,9 +1,14 @@
-﻿.flex-row {
+﻿.flex-row-container {
     display: flex;
     flex-direction: row;
 }
 
-.flex-col {
+.flex-row-container-adaptive {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col-container {
     display: flex;
     flex-direction: column;
 }
@@ -27,8 +32,42 @@ nav {
     background-color: #282828;
 }
 
+.main-container {
+    padding-top: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.coolText {
+    font-family: 'Goudy Bookletter 1911', serif;
+}
+
+.seriousText {
+    font-family: 'Times New Roman', Times, serif;
+}
 
 
+@media screen and (max-width: 1223px)
+{
+    #adaptiveFooterContainer
+    {
+        flex-direction: column;
+    }
+
+    #firstFooterImage
+    {
+        padding-left: 5px;
+    }
+
+    #footerText
+    {
+        padding-bottom: 5px;
+    }
+
+
+
+
+}
 
 
 
