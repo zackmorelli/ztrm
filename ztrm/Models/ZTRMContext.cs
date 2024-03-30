@@ -1,18 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 
-
-
-
-
 namespace ztrm.Models
 {
     public class ZTRMContext : DbContext
     {
-        public ZTRMContext(DbContextOptions<ZTRMContext> options)
-            : base(options)
-        {
-        }
+        public ZTRMContext(DbContextOptions<ZTRMContext> options) : base(options) { }
 
         //Define DbSets from POCO classes
 

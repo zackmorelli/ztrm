@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -9,16 +12,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.CookiePolicy;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.HttpOverrides;
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 using NLog.Web;
 using NLog;
+using Audit.WebApi;
 
 using ztrm.Models;
-using Microsoft.AspNetCore.HttpOverrides;
+using ztrm.Services.Audit;
+
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
@@ -33,7 +36,15 @@ try
     });
 
     // Add services to the IOC container.
+
+    //First we make the DBContext for the ZTRMContext.
     builder.Services.AddDbContext<ZTRMContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ZTRMContext")));
+
+    //We also need to make the separate DBContext for the audit logs
+    builder.Services.AddDbContext<AuditDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ZTRMContext")));
+
+
+
 
     //So Services config for cookies and Authentication and Authorization should go here if we want it.
 
@@ -56,11 +67,8 @@ try
 
     //************************************* Configure App *******************************************************
 
-    //handles HTTP request forwarded from Apache reverse proxy server
-    app.UseForwardedHeaders(new ForwardedHeadersOptions
-    {
-        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-    });
+    // Configure Audit.NET to use our custom data provider
+    Audit.Core.Configuration.DataProvider = new SqlServerAuditDataProvider(app.Services.CreateScope().ServiceProvider.GetService<AuditDbContext>());
 
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
@@ -90,6 +98,17 @@ try
     app.UseStaticFiles();
     app.UseRouting();
     app.UseAuthorization();
+
+    // Add Audit.NET middleware to audit all requests
+    app.UseAuditMiddleware(config => config
+     .FilterByRequest(req => !req.Path.StartsWithSegments("/health")) // Ignore health check requests
+     .WithEventType("{verb}:{url}") // Custom event type including HTTP verb and URL
+     .IncludeHeaders() // Include request and response headers
+     .IncludeRequestBody() // Include the request body in the audit event
+     .IncludeResponseBody() // Include the response body in the audit event
+     .IncludeResponseHeaders() // Optionally include response headers
+    );
+
     app.MapRazorPages();
 
     app.Run();
