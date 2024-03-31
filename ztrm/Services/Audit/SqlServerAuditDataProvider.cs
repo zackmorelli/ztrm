@@ -10,6 +10,8 @@ using ztrm.Models;
 using Newtonsoft.Json.Linq;
 using ztrm.Models.Audit;
 using Audit.WebApi;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Microsoft.AspNetCore.Mvc;
 
 
 
@@ -42,24 +44,23 @@ namespace ztrm.Services.Audit
             {
                 Timestamp = auditEvent.StartDate, 
                 IPAddress = auditApiAction.IpAddress,
-
-
-
-                //HttpMethod = detailsObject["HttpMethod"]?.ToString(),
-                //RequestUrl = detailsObject["RequestUrl"]?.ToString(),
-                //ResponseStatusCode = detailsObject["ResponseStatusCode"] != null ? int.Parse(detailsObject["ResponseStatusCode"].ToString()) : 0,
-                //DurationMilliseconds = detailsObject["DurationMilliseconds"] != null ? int.Parse(detailsObject["DurationMilliseconds"].ToString()) : 0,
-                //UserName = auditEvent.Environment.UserName.ToString(),
-                //UserAgent = detailsObject["UserAgent"]?.ToString(),
-                //RequestBody = detailsObject["RequestBody"]?.ToString(),
-                //ResponseBody = detailsObject["ResponseBody"]?.ToString(),
+                HttpMethod = auditApiAction.HttpMethod,
+                RequestUrl = auditApiAction.RequestUrl,
+                ActionName = auditApiAction.ActionName,
+                ControllerName = auditApiAction.ControllerName,
+                ResponseStatusCode = auditApiAction.ResponseStatusCode,
+                DurationMilliseconds = auditEvent.Duration,
+                UserName = auditApiAction.UserName,
+                UserAgent = auditApiAction.Headers["User-Agent"],
+                RequestBody = auditApiAction.RequestBody.ToString(),
+                ResponseBody = auditApiAction.ResponseBody.ToString(),
                 //SessionId = detailsObject["SessionId"]?.ToString(),
-                //ReferrerUrl = detailsObject["ReferrerUrl"]?.ToString(),
-                //RequestHeaders = detailsObject["RequestHeaders"]?.ToString(),
-                //ResponseHeaders = detailsObject["ResponseHeaders"]?.ToString(),
-                //Exception = detailsObject["Exception"]?.ToString(),
-                //ActionName = detailsObject["ActionName"]?.ToString(),
-                //ControllerName = detailsObject["ControllerName"]?.ToString()
+                ReferrerUrl = auditApiAction.Headers["Referer"],
+
+                //RequestHeaders = auditEvent.Environment.request,
+                //ResponseHeaders = auditApiAction.ResponseHeaders
+
+                Exception = auditApiAction.Exception,
             };
         }
 

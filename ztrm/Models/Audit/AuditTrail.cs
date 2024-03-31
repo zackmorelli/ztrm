@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ztrm.Models.Audit
 {
+    [Table("AuditTrail", Schema = "dbo")]
     public class AuditTrail
     {
         [Key]
