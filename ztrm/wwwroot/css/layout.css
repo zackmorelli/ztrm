@@ -34,8 +34,8 @@ nav {
 
 .main-container {
     padding-top: 8px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .coolText {
@@ -79,7 +79,8 @@ nav {
 /**
  * Footer
  */
-.footer {
+.footer 
+{
     background-color: #282828;
     font-size: 12pt;
     margin: 20px 0 0 0;
@@ -89,33 +90,40 @@ nav {
     color: #b3b3b3;
 }
 
-    #footer h2 {
-        margin: 0;
-        padding: 0;
-    }
+#footer h2 
+{
+    margin: 0;
+    padding: 0;
+}
 
-    #footer p {
-        margin: 0;
-        text-transform: lowercase;
-    }
+#footer p 
+{
+    margin: 0;
+    text-transform: lowercase;
+}
 
-    #footer strong {
-        font-weight: normal;
-        text-transform: uppercase;
-    }
+#footer strong 
+{
+    font-weight: normal;
+    text-transform: uppercase;
+}
 
-.lead {
+.lead 
+{
     font-weight: bold;
 }
 
-#footer .contact, #footer .about {
+#footer .contact, #footer .about 
+{
     float: left;
 }
 
-#footer .contact {
+#footer .contact 
+{
     width: 50%;
 }
 
-#footer .about {
+#footer .about 
+{
     width: 50%;
 }

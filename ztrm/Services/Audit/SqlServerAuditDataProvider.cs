@@ -64,9 +64,9 @@ namespace ztrm.Services.Audit
                 DurationMilliseconds = auditEvent.Duration,
                 UserName = auditApiAction.UserName,
                 UserAgent = auditApiAction.Headers["User-Agent"],
-                RequestBody = auditApiAction.RequestBody.ToString(),
-                ResponseBody = auditApiAction.ResponseBody.ToString(),
-                //SessionId = detailsObject["SessionId"]?.ToString(),
+                RequestBody = auditApiAction.RequestBody != null ? auditApiAction.RequestBody.ToString() : null ,
+                ResponseBody = auditApiAction.ResponseBody != null ? auditApiAction.ResponseBody.ToString(): null,
+                SessionId = auditApiAction.TraceId,
                 ReferrerUrl = referrerUrl,
 
                 //RequestHeaders = auditEvent.Environment.request,

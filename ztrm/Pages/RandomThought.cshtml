@@ -1,0 +1,24 @@
+﻿@page "/RandomThought/{postId:int}"
+@model ztrm.Pages.RandomThoughtPageModel
+
+
+@{
+
+    ViewData["Title"] = Model.RandomThought.Title;
+}
+
+
+<div class="flex-col-container main-container">
+
+    <h3>@Model.RandomThought.Title</h3>
+
+
+    <p>
+        @Model.RandomThoughtText
+    </p>
+
+
+</div>
+
+
+
