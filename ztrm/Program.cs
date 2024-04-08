@@ -21,6 +21,8 @@ using Audit.WebApi;
 
 using ztrm.Models;
 using ztrm.Services.Audit;
+using ztrm.Services.Interfaces;
+using ztrm.Services;
 
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -30,36 +32,34 @@ try
 {
     //First configure services for the webAppBuilder
     var builder = WebApplication.CreateBuilder(args);
+
+    //Setup Nlog for dependency Injection.
+    builder.Logging.ClearProviders();
+    builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Warning);
+    builder.Host.UseNLog();
+
+    //Retrieve configuration settings
     builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
     {
         config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
     });
 
-    // Add services to the IOC container.
 
+    //Set up DB Contexts
     //First we make the DBContext for the ZTRMContext.
     builder.Services.AddDbContext<ZTRMContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ZTRMContext")));
 
     //We also need to make the separate DBContext for the audit logs
     builder.Services.AddDbContext<AuditDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ZTRMContext")));
 
-
-
-
     //So Services config for cookies and Authentication and Authorization should go here if we want it.
-
 
     builder.Services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
     builder.Services.AddRazorPages();
     builder.Services.AddHttpContextAccessor();
 
-    //Setup Nlog for dependency Injection. this needs to go last
-    builder.Logging.ClearProviders();
-    builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-    builder.Host.UseNLog();
-
-
     //Custom Services
+    builder.Services.AddScoped<IRandomThoughtsService, RandomThoughtsService>();
 
 
 

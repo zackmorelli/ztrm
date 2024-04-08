@@ -12,6 +12,7 @@ using ztrm.Models.Audit;
 using Audit.WebApi;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Components.RenderTree;
 
 
 
@@ -39,6 +40,17 @@ namespace ztrm.Services.Audit
         private AuditTrail ConvertToAuditTrail(AuditEvent auditEvent)
         {
             AuditApiAction auditApiAction = auditEvent.GetWebApiAuditAction();
+            string referrerUrl;
+            
+            if (auditApiAction.Headers.ContainsKey("Referer") == true) 
+            {
+                referrerUrl = auditApiAction.Headers["Referer"];
+            }
+            else
+            {
+                referrerUrl = null;
+            }
+            
 
             return new AuditTrail
             {
@@ -55,7 +67,7 @@ namespace ztrm.Services.Audit
                 RequestBody = auditApiAction.RequestBody.ToString(),
                 ResponseBody = auditApiAction.ResponseBody.ToString(),
                 //SessionId = detailsObject["SessionId"]?.ToString(),
-                ReferrerUrl = auditApiAction.Headers["Referer"],
+                ReferrerUrl = referrerUrl,
 
                 //RequestHeaders = auditEvent.Environment.request,
                 //ResponseHeaders = auditApiAction.ResponseHeaders
