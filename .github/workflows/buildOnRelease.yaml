@@ -17,9 +17,15 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '8.0.x'  # Ensure this version is correctly specified
+        
+    - name: Restore dependencies
+      run: dotnet restore
 
     - name: Build project
-      run: dotnet build ztrm.sln --configuration Release --output ./build_output
+      run: dotnet build ztrm.sln --configuration Release --no-restore --output ./build_output
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
 
     - name: Zip the build output
       run: Compress-Archive -Path ./build_output/* -DestinationPath ./build_output/ztrm.zip
@@ -33,3 +39,10 @@ jobs:
         asset_path: ./build_ouput/ztrm.zip
         asset_name: ztrm.zip
         asset_content_type: application/zip
+        
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      if: always() # This ensures that test results are uploaded even if the test step fails
+      with:
+        name: Test Results
+        path: ztrm/test-results.xml
