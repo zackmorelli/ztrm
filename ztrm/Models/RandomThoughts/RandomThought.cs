@@ -23,7 +23,7 @@ namespace ztrm.Models.RandomThoughts
 
         [Required]
         [MaxLength(255)]
-        public string FilePath { get; set; }
+        public string FileName { get; set; }
 
 
 

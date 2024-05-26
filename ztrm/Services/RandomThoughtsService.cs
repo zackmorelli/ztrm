@@ -10,17 +10,18 @@ using ztrm.Services.Interfaces;
 namespace ztrm.Services
 {
     
-    
     public class RandomThoughtsService : IRandomThoughtsService
     {
 
+        private readonly IConfiguration _configuration;
         private readonly ZTRMContext _ztrmContext;
         private readonly ILogger _logger;
 
-        public RandomThoughtsService(ZTRMContext ztrmContext, ILogger<RandomThoughtsService> logger)
+        public RandomThoughtsService(ZTRMContext ztrmContext, ILogger<RandomThoughtsService> logger, IConfiguration configuration)
         {
             _ztrmContext = ztrmContext;
             _logger = logger;
+            _configuration = configuration;
         }
 
 
@@ -69,11 +70,18 @@ namespace ztrm.Services
         }
 
 
-        public string GetRandomThoughtText(string filePath)
+        /// <summary>
+        /// Given a filename, this determines the path to the random thought file based on the environment,
+        /// retrieves it and returns the text as a string.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public string GetRandomThoughtText(string fileName)
         {
             try
             {
-                return File.ReadAllText(filePath);
+                string randomThoughtsFileFullPath = _configuration.GetValue<string>("RandomThoughtsFilePath") + "\\" + fileName;
+                return File.ReadAllText(randomThoughtsFileFullPath);
             }
             catch (Exception ex)
             {
