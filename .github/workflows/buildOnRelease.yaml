@@ -18,14 +18,20 @@ jobs:
       with:
         dotnet-version: '8.0.x'  # Ensure this version is correctly specified
         
+    - name: Clean solution
+      run: dotnet clean ztrm.sln
+
     - name: Restore dependencies
       run: dotnet restore
 
     - name: Build project
-      run: dotnet build ztrm.sln --configuration Release --no-restore --output ./build_output
+      run: dotnet build ztrm.sln --configuration Release --no-restore
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+    - name: Publish Project
+      run: dotnet publish ztrm.sln -c Release -r win-x64 --no-self-contained -o ./build_output
 
     - name: Zip the build output
       run: Compress-Archive -Path ./build_output/* -DestinationPath ./build_output/ztrm.zip
