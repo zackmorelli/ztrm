@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
@@ -25,14 +21,12 @@ namespace ztrm.Pages
         public List<RandomThoughtsCategoryLookup> RandomThoughtsCategories { get; set; }
 
 
-
         public RandomThoughtsPageModel(IRandomThoughtsService randomThoughtsService, ILogger<RandomThoughtsPageModel> logger)
         {
             _randomThoughtsService = randomThoughtsService;
             _logger = logger;
 
         }
-
 
 
         public void OnGet()

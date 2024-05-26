@@ -1,16 +1,32 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ztrm.Pages.Shared
+namespace ztrm.Pages
 {
     public class PublicationsModel : PageModel
     {
+        private readonly ILogger _logger;
+
+
+        public PublicationsModel(ILogger<PublicationsModel> logger)
+        {
+            _logger = logger;
+        }
+
+
         public void OnGet()
         {
+            try
+            {
+
+
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred in method {MethodName}", MethodBase.GetCurrentMethod().Name);
+                throw;
+            }
         }
     }
 }

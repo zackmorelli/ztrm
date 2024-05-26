@@ -16,7 +16,6 @@ namespace ztrm.Pages
         private readonly ILogger _logger;
 
 
-
         public RandomThought RandomThought { get; set; }
 
         public string RandomThoughtText { get; set; }
