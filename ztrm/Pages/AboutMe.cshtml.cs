@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Reflection;
 
 
 namespace ztrm.Pages
 {
-    public class IndexModel : PageModel
+    public class AboutMeModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+
+        public AboutMeModel(ILogger<AboutMeModel> logger)
         {
             _logger = logger;
         }
+
+
 
         public void OnGet()
         {
@@ -28,5 +30,6 @@ namespace ztrm.Pages
                 throw;
             }
         }
+
     }
 }

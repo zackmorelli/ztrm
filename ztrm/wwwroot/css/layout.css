@@ -1,0 +1,138 @@
+﻿.flex-row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-row-container-adaptive {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-custom {
+    background-color: #121212;
+    color: white;
+}
+
+
+body {
+    font-family: "Myriad Pro", "Trebuchet MS";
+    font-size: 16pt;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: #282828;
+}
+
+.main-container {
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.coolText {
+    font-family: 'Goudy Bookletter 1911', serif;
+}
+
+.seriousText {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+@media screen and (max-width: 1223px)
+{
+    #adaptiveFooterContainer
+    {
+        flex-direction: column;
+    }
+
+    #firstFooterImage
+    {
+        padding-left: 5px;
+    }
+
+    #footerText
+    {
+        padding-bottom: 5px;
+    }
+
+
+
+
+}
+
+
+.house-oops 
+{
+    height: 280px;
+    width: 498px;
+}
+
+.privacy-policy-subheader
+{
+    font-weight: 500;
+}
+
+
+
+
+
+/**
+ * Footer
+ */
+.footer 
+{
+    background-color: #282828;
+    font-size: 12pt;
+    margin: 20px 0 0 0;
+    padding: 10px;
+    padding-bottom: 0px;
+    display: flex;
+    color: #b3b3b3;
+}
+
+#footer h2 
+{
+    margin: 0;
+    padding: 0;
+}
+
+#footer p 
+{
+    margin: 0;
+    text-transform: lowercase;
+}
+
+#footer strong 
+{
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.lead 
+{
+    font-weight: bold;
+}
+
+#footer .contact, #footer .about 
+{
+    float: left;
+}
+
+#footer .contact 
+{
+    width: 50%;
+}
+
+#footer .about 
+{
+    width: 50%;
+}

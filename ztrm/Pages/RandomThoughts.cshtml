@@ -1,0 +1,42 @@
+﻿@page
+@using ztrm.Models.RandomThoughts
+@model ztrm.Pages.RandomThoughtsPageModel
+
+@{
+    ViewData["Title"] = "ztrm - Random Thoughts";
+}
+
+
+<div class="flex-col-container main-container">
+
+
+    @foreach (RandomThoughtsCategoryLookup category in Model.RandomThoughtsCategories)
+    {
+        <h4>@category.CategoryName</h4>
+        <ul>
+            @foreach (RandomThought randomThought in Model.RandomThoughts.Where(rt => rt.RandomThoughtsCategories.First().CategoryId == category.CategoryId))
+            {
+                //string randomThoughtInfo = randomThought.Title + " - " + randomThought.PublishedDate.ToShortDateString();
+
+                <li><a href="@Url.Page("/RandomThought", new { postId = randomThought.PostId })" target="_blank">@randomThought.Title</a> - @randomThought.PublishedDate.ToShortDateString()</li>
+                        
+            }
+
+        </ul>
+        
+    }
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
