@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-
 using System.Reflection;
-
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ztrm.Pages
 {
-    public class IndexModel : PageModel
+    public class PublicationsModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+
+        public PublicationsModel(ILogger<PublicationsModel> logger)
         {
             _logger = logger;
         }
+
 
         public void OnGet()
         {

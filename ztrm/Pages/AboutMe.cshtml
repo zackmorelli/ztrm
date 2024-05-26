@@ -1,0 +1,51 @@
+﻿@page
+@model ztrm.Pages.AboutMeModel
+
+@{
+    ViewData["Title"] = "ztrm - About Me";
+}
+
+<style>
+
+
+
+    @@media screen and (max-width: 650px) 
+    {
+        .flex-row-container-adaptive 
+        {
+            flex-direction: column;
+        }
+    }
+
+
+</style>
+
+
+<div class="flex-col-container main-container">
+    <div class="flex-row-container">
+        <p class="coolText">
+            I live with my beautiful girlfriend Leah, a dedicated social worker and obsessive fan of true crime shows, on the Northshore of Eastern Massachusetts, U.S.A.
+            I work at a local software development company and have a bachelors of science degree in Physics from Umass Lowell.
+            As you may have guessed, I am a big supporter of open-source software.
+
+            In my free time I love to play Paradox strategy games like Hearts of Iron, Stellaris, and Victoria 3.
+            More recently I have been enjoying the CRPG renaissance by whiling away the hours playing Baldur's Gate 3.
+            Ocassionly I return to my FPS roots with the Halo series.
+            I also love to spend time hiking and camping outdoors, but unfortunatley adult life doesn't really afford me the oppurtunity to do that anymore. 
+        </p>
+    </div>
+    <div class="flex-row-container-adaptive">
+        <div style="margin-right: 10px; border: 2px solid #b3b3b3;">
+            <img src="~/images/zack_and_leah_in_summer.jpg" alt="zack and leah" />
+        </div>
+
+        <div style="margin-right: 10px; border: 2px solid #b3b3b3;">
+            <img src="~/images/zack_with_dogs.jpg" alt="zack with dogs" />
+        </div>
+
+        <div>
+            <img style="border: 2px solid #b3b3b3;" src="~/images/zack_and_demi.jpg" alt="zack and demi" />
+        </div>
+    </div>
+
+</div>

@@ -1,50 +1,115 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ztrm</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ztrm</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"]</title>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - ztrm - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        <!--local CSS stylesheets -->
+        <link rel="stylesheet" href="~/css/layout.css"/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+
+        <!--Remote Stylesheets -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
+
+        <!--local JS files -->
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    </head>
+
+    <body class="body-custom">
+        <header>
+            <nav class="nav">
+                <a class="nav-link" asp-page="/Index">Home</a>
+                <a class="nav-link" asp-page="/RandomThoughts">Random Thoughts</a>
+                <a class="nav-link" asp-page="/Publications">Publications</a>
+                <a class="nav-link" asp-page="/AboutMe">About Me</a>
+            </nav>
+        </header>
+
+        <div>
+            <main>
+                @RenderBody()
+            </main>
         </div>
-    </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <footer id="layoutFooter" class="container-fluid footer fixed-bottom">
+            <div class="flex-col-container  row">
+                <div id="adaptiveFooterContainer" class="flex-row-container" style="align-content: center;">
+                    <div id="footerText" class="flex-row-container" style="padding-left: 5px; padding-right: 5px; min-width: 202.77px; align-items: center;">
+                        <span>This website is powered by:</span>
+                    </div>
 
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+                    <div style="justify-content: space-around;" class="flex-row-container">
+                        <div class="flex-row-container">
+                            <div id="firstFooterImage" class="col">
+                                <a target="_blank" href="https://www.microsoft.com/en-us/windows-server/">
+                                    <img src="~/images/windows-server-logo.jpg" alt="Windows Server logo" />
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a target="_blank" href="https://www.iis.net/">
+                                    <img src="~/images/microsoft-iis2928.jpg" alt="IIS logo" />
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a target="_blank" href="https://dotnet.microsoft.com/en-us/apps/aspnet">
+                                    <img src="~/images/aspnetcore.png" alt="ASP.NET logo" />
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a target="_blank" href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">
+                                    <img src="~/images/microsoft-sql-server-logo.png" alt="SQL Server logo" />
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a target="_blank" href="https://getbootstrap.com/">
+                                    <img src="~/images/bootstrap-logo-vector.png" alt="Bootstrap logo" />
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a target="_blank" href="https://www.cloudflare.com">
+                                    <img src="~/images/cloudflare-logo.png" alt="Cloudflare logo" />
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <div style="align-items: center; border-left: 2px solid #b3b3b3" class="flex-row-container">
+                            <div style="align-items: center;" class="col flex-row-container">
+                                <a target="_blank" href="https://github.com/zackmorelli">
+                                    <img src="~/images/github-logo.png" alt="Github logo" />
+                                </a>
+                            </div>
+
+                            <div style="align-items: center;" class="col flex-row-container">
+                                <a target="_blank" href="https://www.linkedin.com/in/zackary-morelli-363806143">
+                                    <img src="~/images/linked-in.png" alt="LinkedIn logo" />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row" style="padding-left: 5px; padding-top: 5px;">
+                    <div class="col">
+                        &copy; 2024 - Zackary T. Morelli - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </body>
 </html>

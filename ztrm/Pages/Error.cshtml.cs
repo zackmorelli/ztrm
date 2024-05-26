@@ -15,18 +15,24 @@ namespace ztrm.Pages
     {
         public string RequestId { get; set; }
 
+        public string Environment { get; set; }
+
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
         private readonly ILogger<ErrorModel> _logger;
+        private readonly IConfiguration _configuration;
 
-        public ErrorModel(ILogger<ErrorModel> logger)
+        public ErrorModel(ILogger<ErrorModel> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+
+            Environment = _configuration.GetValue<string>("EnvironmentName");
         }
     }
 }
