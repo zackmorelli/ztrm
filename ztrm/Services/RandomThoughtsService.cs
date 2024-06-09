@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 using System.Reflection;
 
 
@@ -60,7 +59,7 @@ namespace ztrm.Services
                 return _ztrmContext.RandomThoughts
                                    .Include(rt => rt.RandomThoughtsCategories)
                                      .ThenInclude(rtc => rtc.RandomThoughtsCategoryLookup)
-                                   .FirstOrDefault(rt => rt.PostId == postId);
+                                   .FirstOrDefault(rt => rt.postid == postId);
             }
             catch (Exception ex)
             {

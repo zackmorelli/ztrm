@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ztrm.Models.RandomThoughts
 {
-    [Table("RandomThoughtsCategories", Schema = "dbo")]
+    [Table("randomthoughtscategories", Schema = "public")]
     public class RandomThoughtsCategory
     {
         [Key, Column(Order = 0), ForeignKey("RandomThought")]
-        public int PostId { get; set; }
+        public int postid { get; set; }
 
         [Key, Column(Order = 1), ForeignKey("RandomThoughtsCategoryLookup")]
-        public int CategoryId { get; set; }
+        public int categoryid { get; set; }
 
 
         // Navigation properties

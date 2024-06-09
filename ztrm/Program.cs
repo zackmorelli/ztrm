@@ -47,10 +47,10 @@ try
 
     //Set up DB Contexts
     //First we make the DBContext for the ZTRMContext.
-    builder.Services.AddDbContext<ZTRMContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ZTRMContext")));
+    builder.Services.AddDbContext<ZTRMContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("ZTRMContext")));
 
     //We also need to make the separate DBContext for the audit logs
-    builder.Services.AddDbContext<AuditDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ZTRMContext")));
+    builder.Services.AddDbContext<AuditDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("ZTRMContext")));
 
     //So Services config for cookies and Authentication and Authorization should go here if we want it.
 

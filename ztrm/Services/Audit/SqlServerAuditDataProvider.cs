@@ -1,16 +1,14 @@
 ﻿using Audit.Core;
 using Microsoft.EntityFrameworkCore;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 
 using ztrm.Models;
-using Newtonsoft.Json.Linq;
 using ztrm.Models.Audit;
 using Audit.WebApi;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Components.RenderTree;
 
@@ -34,7 +32,7 @@ namespace ztrm.Services.Audit
             var auditTrail = ConvertToAuditTrail(auditEvent);
             _auditDbContext.AuditTrails.Add(auditTrail);
             _auditDbContext.SaveChanges();
-            return auditTrail.AuditTrailId; // Return the ID of the inserted audit log
+            return auditTrail.audittrailid; // Return the ID of the inserted audit log
         }
 
         private AuditTrail ConvertToAuditTrail(AuditEvent auditEvent)
@@ -54,25 +52,25 @@ namespace ztrm.Services.Audit
 
             return new AuditTrail
             {
-                Timestamp = auditEvent.StartDate, 
-                IPAddress = auditApiAction.IpAddress,
-                HttpMethod = auditApiAction.HttpMethod,
-                RequestUrl = auditApiAction.RequestUrl,
-                ActionName = auditApiAction.ActionName,
-                ControllerName = auditApiAction.ControllerName,
-                ResponseStatusCode = auditApiAction.ResponseStatusCode,
-                DurationMilliseconds = auditEvent.Duration,
-                UserName = auditApiAction.UserName,
-                UserAgent = auditApiAction.Headers["User-Agent"],
-                RequestBody = auditApiAction.RequestBody != null ? auditApiAction.RequestBody.ToString() : null ,
-                ResponseBody = auditApiAction.ResponseBody != null ? auditApiAction.ResponseBody.ToString(): null,
-                SessionId = auditApiAction.TraceId,
-                ReferrerUrl = referrerUrl,
+                timestamp                   = auditEvent.StartDate, 
+                ipaddress                   = auditApiAction.IpAddress,
+                httpmethod                  = auditApiAction.HttpMethod,
+                requesturl                  = auditApiAction.RequestUrl,
+                actionname                  = auditApiAction.ActionName,
+                controllername              = auditApiAction.ControllerName,
+                responsestatuscode          = auditApiAction.ResponseStatusCode,
+                durationmilliseconds        = auditEvent.Duration,
+                username                    = auditApiAction.UserName,
+                useragent                   = auditApiAction.Headers["User-Agent"],
+                requestbody                 = auditApiAction.RequestBody != null ? auditApiAction.RequestBody.ToString() : null ,
+                responsebody                = auditApiAction.ResponseBody != null ? auditApiAction.ResponseBody.ToString(): null,
+                sessionid                   = auditApiAction.TraceId,
+                referrerurl                 = referrerUrl,
 
-                //RequestHeaders = auditEvent.Environment.request,
-                //ResponseHeaders = auditApiAction.ResponseHeaders
+                //RequestHeaders            = auditEvent.Environment.request,
+                //ResponseHeaders           = auditApiAction.ResponseHeaders
 
-                Exception = auditApiAction.Exception,
+                exception                   = auditApiAction.Exception,
             };
         }
 

@@ -12,13 +12,13 @@
 
     @foreach (RandomThoughtsCategoryLookup category in Model.RandomThoughtsCategories)
     {
-        <h4>@category.CategoryName</h4>
+        <h4>@category.categoryname</h4>
         <ul>
-            @foreach (RandomThought randomThought in Model.RandomThoughts.Where(rt => rt.RandomThoughtsCategories.First().CategoryId == category.CategoryId))
+            @foreach (RandomThought randomThought in Model.RandomThoughts.Where(rt => rt.RandomThoughtsCategories.First().categoryid == category.categoryid))
             {
                 //string randomThoughtInfo = randomThought.Title + " - " + randomThought.PublishedDate.ToShortDateString();
 
-                <li><a href="@Url.Page("/RandomThought", new { postId = randomThought.PostId })" target="_blank">@randomThought.Title</a> - @randomThought.PublishedDate.ToShortDateString()</li>
+                <li><a href="@Url.Page("/RandomThought", new { postId = randomThought.postid })" target="_blank">@randomThought.title</a> - @randomThought.publisheddate.ToShortDateString()</li>
                         
             }
 

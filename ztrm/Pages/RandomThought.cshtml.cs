@@ -39,7 +39,7 @@ namespace ztrm.Pages
                     if (RandomThought != null && RandomThought != default)
                     {
                         //retrieve actual text of random thought post
-                        RandomThoughtText = _randomThoughtsService.GetRandomThoughtText(RandomThought.FileName);
+                        RandomThoughtText = _randomThoughtsService.GetRandomThoughtText(RandomThought.filename);
 
                         return Page();
                     }

@@ -4,67 +4,67 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ztrm.Models.Audit
 {
-    [Table("AuditTrail", Schema = "dbo")]
+    [Table("audittrail", Schema = "public")]
     public class AuditTrail
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long AuditTrailId { get; set; }
+        public long audittrailid { get; set; }
 
         [Required]
-        public DateTime Timestamp { get; set; }
+        public DateTime timestamp { get; set; }
 
         [Required]
         [MaxLength(39)]
-        public string IPAddress { get; set; }
+        public string ipaddress { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public string HttpMethod { get; set; }
+        public string httpmethod { get; set; }
 
         [Required]
         [MaxLength(2048)]
-        public string RequestUrl { get; set; }
+        public string requesturl { get; set; }
 
         [Required]
         [Range(100, 599)]
-        public int ResponseStatusCode { get; set; }
+        public int responsestatuscode { get; set; }
 
         [Required]
-        public int DurationMilliseconds { get; set; }
+        public int durationmilliseconds { get; set; }
 
         [MaxLength(256)]
-        public string UserName { get; set; }
+        public string username { get; set; }
 
         [MaxLength(512)]
-        public string UserAgent { get; set; }
+        public string useragent { get; set; }
 
         [MaxLength(3000)]
-        public string RequestBody { get; set; }
+        public string requestbody { get; set; }
 
         [MaxLength(3000)]
-        public string ResponseBody { get; set; }
+        public string responsebody { get; set; }
 
         [MaxLength(128)]
-        public string SessionId { get; set; }
+        public string sessionid { get; set; }
 
         [MaxLength(2048)]
-        public string ReferrerUrl { get; set; }
+        public string referrerurl { get; set; }
 
         [MaxLength(3000)]
-        public string RequestHeaders { get; set; }
+        public string requestheaders { get; set; }
 
         [MaxLength(3000)]
-        public string ResponseHeaders { get; set; }
+        public string responseheaders { get; set; }
 
         [MaxLength(3000)]
-        public string Exception { get; set; }
+        public string exception { get; set; }
 
         [MaxLength(256)]
-        public string ActionName { get; set; }
+        public string actionname { get; set; }
 
         [MaxLength(256)]
-        public string ControllerName { get; set; }
+        public string controllername { get; set; }
 
     }
 }
