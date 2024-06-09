@@ -38,6 +38,12 @@ try
     builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Warning);
     builder.Host.UseNLog();
 
+    // This method pulls in configurations set in 'appsettings.json'
+    builder.WebHost.ConfigureKestrel(serverOptions =>
+    {
+        // Configuration is automatically bound to Kestrel
+    });
+
     //Retrieve configuration settings
     builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
     {
@@ -98,6 +104,12 @@ try
     app.UseStaticFiles();
     app.UseRouting();
     app.UseAuthorization();
+
+    app.UseForwardedHeaders(new ForwardedHeadersOptions
+    {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+    });
+
 
     // Add Audit.NET middleware to audit all requests
     app.UseAuditMiddleware(config => config
