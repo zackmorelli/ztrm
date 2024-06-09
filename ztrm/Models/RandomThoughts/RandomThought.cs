@@ -4,26 +4,27 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ztrm.Models.RandomThoughts
 {
+    [Table("randomthought", Schema = "public")]
     public class RandomThought
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PostId { get; set; }
+        public int postid { get; set; }
 
         [Required]
         [MaxLength(255)]
-        public string Title { get; set; }
+        public string title { get; set; }
 
         [Required]
-        public DateTime PublishedDate { get; set; }
+        public DateTime publisheddate { get; set; }
 
         [Required]
         [MaxLength(1000)]
-        public string Summary{ get; set; }
+        public string summary { get; set; }
 
         [Required]
         [MaxLength(255)]
-        public string FileName { get; set; }
+        public string filename { get; set; }
 
 
 

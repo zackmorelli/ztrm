@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ztrm.Models.RandomThoughts
 {
-    [Table("RandomThoughtsCategoriesLookup", Schema = "dbo")]
+    [Table("randomthoughtscategorieslookup", Schema = "public")]
     public class RandomThoughtsCategoryLookup
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CategoryId { get; set; }
+        public int categoryid { get; set; }
 
         [Required]
-        public string CategoryName { get; set; }
+        public string categoryname { get; set; }
 
         // Navigation property
         public List<RandomThoughtsCategory> RandomThoughtsCategories { get; set; }

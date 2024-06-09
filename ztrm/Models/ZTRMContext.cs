@@ -16,14 +16,7 @@ namespace ztrm.Models
 
 
 
-
-
-
-
-
         //Stored Procedure Container entites - these are not actual tables in the DB
-
-
 
 
 
@@ -31,17 +24,17 @@ namespace ztrm.Models
         {
             // Configure the many-to-many relationship
             modelBuilder.Entity<RandomThoughtsCategory>()
-                .HasKey(rtc => new { rtc.PostId, rtc.CategoryId });
+                .HasKey(rtc => new { rtc.postid, rtc.categoryid });
 
             modelBuilder.Entity<RandomThoughtsCategory>()
                 .HasOne<RandomThought>(rtc => rtc.RandomThought)
                 .WithMany(rt => rt.RandomThoughtsCategories)
-                .HasForeignKey(rtc => rtc.PostId);
+                .HasForeignKey(rtc => rtc.postid);
 
             modelBuilder.Entity<RandomThoughtsCategory>()
                 .HasOne<RandomThoughtsCategoryLookup>(rtc => rtc.RandomThoughtsCategoryLookup)
                 .WithMany(rtl => rtl.RandomThoughtsCategories)
-                .HasForeignKey(rtc => rtc.CategoryId);
+                .HasForeignKey(rtc => rtc.categoryid);
         }
 
 
