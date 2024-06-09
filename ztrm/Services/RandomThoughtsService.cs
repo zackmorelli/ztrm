@@ -79,7 +79,17 @@ namespace ztrm.Services
         {
             try
             {
-                string randomThoughtsFileFullPath = _configuration.GetValue<string>("RandomThoughtsFilePath") + "\\" + fileName;
+                //so our dev environment is windows, but our prod environment is linux
+                string randomThoughtsFileFullPath;
+                if (_configuration.GetValue<string>("EnvironmentName") == "Development")
+                {
+                    randomThoughtsFileFullPath = _configuration.GetValue<string>("RandomThoughtsFilePath") + "\\" + fileName;
+                }
+                else
+                {
+                    randomThoughtsFileFullPath = _configuration.GetValue<string>("RandomThoughtsFilePath") + "/" + fileName;
+                }
+                     
                 return File.ReadAllText(randomThoughtsFileFullPath);
             }
             catch (Exception ex)
