@@ -17,6 +17,9 @@
     <None Remove="Models\StoredProcedureContainers\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="wwwroot\ztrm.net-privacy-policy.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Audit.NET" Version="25.0.4" />
     <PackageReference Include="Audit.NET.PostgreSql" Version="25.0.4" />
     <PackageReference Include="Audit.WebApi.Core" Version="25.0.4" />

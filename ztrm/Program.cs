@@ -1,19 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.CookiePolicy;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.HttpOverrides;
-
 
 using NLog.Web;
 using NLog;
@@ -35,7 +23,7 @@ try
 
     //Setup Nlog for dependency Injection.
     builder.Logging.ClearProviders();
-    builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Warning);
+    builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Information);
     builder.Host.UseNLog();
 
     // This method pulls in configurations set in 'appsettings.json'
@@ -73,8 +61,10 @@ try
 
     //************************************* Configure App *******************************************************
 
+    app.UseMiddleware<ztrm.Middleware.ErrorLogger>();
+
     // Configure Audit.NET to use our custom data provider
-    Audit.Core.Configuration.DataProvider = new SqlServerAuditDataProvider(app.Services.CreateScope().ServiceProvider.GetService<AuditDbContext>());
+    Audit.Core.Configuration.DataProvider = new GenericAuditDataProvider(app.Services.CreateScope().ServiceProvider.GetService<AuditDbContext>());
 
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
@@ -88,18 +78,18 @@ try
         app.UseDeveloperExceptionPage();
     }
 
-    IList<CultureInfo> sc = new List<CultureInfo>();
-    sc.Add(new CultureInfo("en-US"));
+    List<CultureInfo> cultureInfoList = new List<CultureInfo>();
+    cultureInfoList.Add(new CultureInfo("en-US"));
 
-    var lo = new RequestLocalizationOptions
+    RequestLocalizationOptions localizationOptions = new RequestLocalizationOptions
     {
         DefaultRequestCulture = new RequestCulture("en-US"),
-        SupportedCultures = sc,
-        SupportedUICultures = sc
+        SupportedCultures = cultureInfoList,
+        SupportedUICultures = cultureInfoList
     };
-    var cp = lo.RequestCultureProviders.OfType<CookieRequestCultureProvider>().First();
+    CookieRequestCultureProvider cultureProvider = localizationOptions.RequestCultureProviders.OfType<CookieRequestCultureProvider>().First();
 
-    app.UseRequestLocalization(lo);
+    app.UseRequestLocalization(localizationOptions);
     app.UseHttpsRedirection();
     app.UseStaticFiles();
     app.UseRouting();
