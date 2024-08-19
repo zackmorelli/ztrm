@@ -18,21 +18,21 @@ using Microsoft.AspNetCore.Components.RenderTree;
 
 namespace ztrm.Services.Audit
 {
-    public class SqlServerAuditDataProvider : AuditDataProvider
+    public class GenericAuditDataProvider : AuditDataProvider
     {
         private readonly AuditDbContext _auditDbContext;
 
-        public SqlServerAuditDataProvider(AuditDbContext auditDbContext)
+        public GenericAuditDataProvider(AuditDbContext auditDbContext)
         {
             _auditDbContext = auditDbContext;
         }
 
         public override object InsertEvent(AuditEvent auditEvent)
         {
-            var auditTrail = ConvertToAuditTrail(auditEvent);
+            AuditTrail auditTrail = ConvertToAuditTrail(auditEvent);
             _auditDbContext.AuditTrails.Add(auditTrail);
             _auditDbContext.SaveChanges();
-            return auditTrail.audittrailid; // Return the ID of the inserted audit log
+            return auditTrail.audittrailid;
         }
 
         private AuditTrail ConvertToAuditTrail(AuditEvent auditEvent)

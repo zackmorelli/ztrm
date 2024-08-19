@@ -1,0 +1,38 @@
+Privacy Policy for ztrm.net
+
+Effective Date: 05/26/2024
+
+Welcome to ztrm.net (the "Site"), owned and operated by Zackary Thomas Ricci Morelli. This privacy policy aims to inform you about the type of information that is collected by the Site and how it is used and protected.
+
+1. Personal Information Collected
+
+ztrm.net is committed to the privacy of our visitors. The Site does not collect any personal information from users, such as names, addresses, or email addresses, unless voluntarily submitted by users themselves. However, for security purposes, our servers automatically log all HTTP/HTTPS requests made against the Site. These logs include IP addresses and browser details but are solely used to monitor for potential security breaches and ensure the integrity of the Site.
+
+2. Use of Information
+
+Any information collected by ztrm.net, specifically server logs, is used exclusively for security monitoring purposes. These logs help us detect and respond to potential security threats by analyzing traffic patterns and identifying malicious activities. The logs are kept securely and are accessed only when necessary to investigate security incidents.
+
+3. Third-party Links
+
+Our Site contains links to other websites operated by third parties. These links are provided for your convenience and do not signify our endorsement of such other websites or their content. ztrm.net is not responsible for the privacy practices of these external sites. We encourage users to be aware when they leave our Site and to read the privacy statements of other websites that collect personally identifiable information.
+
+4. Cloudflare as Our DNS Provider
+
+We use Cloudflare as our DNS provider. Cloudflare may collect certain information about DNS requests made to our domain, such as geographic location, in order to provide their services. This collection is managed under Cloudflare’s own privacy policy, which can be accessed on their website.
+
+5. Consent
+
+By using our Site, you hereby consent to our privacy policy and agree to its terms.
+
+6. Changes to Our Privacy Policy
+
+ztrm.net reserves the right to make changes to this privacy policy at any time. When we do, we will revise the updated date at the top of this page. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. Your continued use of the Site following the posting of changes to this policy will be deemed your acceptance of those changes.
+
+Contacting Us
+
+If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at:
+
+ztrm.net
+ztrm@ztrm.net
+
+This document was last updated on 05/24/2024.
