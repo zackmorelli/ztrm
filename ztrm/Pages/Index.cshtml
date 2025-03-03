@@ -2,35 +2,75 @@
 @model IndexModel
 
 @{
-    ViewData["Title"] = "ztrm - Home Page";
+    ViewData["Title"] = "ztrm.net - Home Page";
 }
 
-<style>
-
-    @@media screen and (max-width: 650px)
-    {
-        .flex-row-container-adaptive
-        {
-            flex-direction: column;
-        }
-
-        #homePageText
-        {
-            margin-top: 8px;
-            margin-left: 0px;
-        }
-    }
-
-
-</style>
 
 <div class="flex-row-container-adaptive main-container">
-    <img style="max-width: 400px; border: 2px solid #b3b3b3;"  src="~/images/pic_of_zack.jpg" alt="picture of zack wearing blue light glasses with purple light in the background" />
 
-    <p id="homePageText" class="coolText" style="margin-left: 8px;">
-        Hi, my name is Zackary Morelli. Welcome to my personal website.
-        I am a physicist by education and software developer by trade.
-        This website serves as a personal blog and also as a test bed for me to experiment with web development and server management.
-        Feel free to look around. You may reach me at <a href="mailto:ztrm@ztrm.net" target="_blank">ztrm@ztrm.net</a>.
-    </p>
+    <div class="flex-col-container homePagePictureContainer">
+        <div class="image-container">
+            <img class="rounded-image-with-shadow " src="~/images/pic_of_zack_purple.jpg" alt="picture of zack wearing blue light glasses with purple light in the background" />
+        </div>
+        <div class="image-container">
+            <img class="rounded-image-with-shadow " src="~/images/mustache_zack.jpg" alt="picture of zack with a mustache wearing blue light glasses" />
+        </div>
+        <div class="image-container">
+            <img class="rounded-image-with-shadow " src="~/images/happy_zack_in_restraunt.jpg" alt="picture of zack smiling in a restraunt" />
+        </div>
+    </div>
+
+
+
+    <div class="flex-col-container coolText homePageTextContainer">
+
+        <p>
+            Hi, my name is Zackary Morelli. Welcome to my personal website.
+            I am a physicist by education and .NET web developer by trade.
+            This website serves as a personal blog and also as a test bed for me to experiment with web development and server management.
+            Feel free to look around. You may reach me at <a href="mailto:ztrm@ztrm.net" target="_blank">ztrm@ztrm.net</a>.
+        </p>
+
+        <p>
+            In addition to running a few websites on an Ubuntu, Nginx, .NET stack, I also run my own email server stack (which is very difficult to do these days). My email above on the ztrm.net domain is run by this email server.
+            Although not end-to-end encrypted, I think email is a very powerful and still relevant tool for communication due to its openness and ubiquity.
+            Even though tools like <a href="https://sendgrid.com/en-us" target="_blank">SendGrid</a> make it easy for applications to send programmatic emails via an API, I think real email servers are useful because applications can use them to send emails programmatically,
+            but human beings can use the same email accounts to both receive and send emails using a custom domain name.
+            For sensitive or private communications with people you know, I strongly recommend that everyone use Signal for encrypted communication.
+            <a href="https://signal.org/" target="_blank">Signal</a> is a free and open-source application owned by a nonprofit that supports end-to-end encrypted messaging, voice calls, and video calls.
+        </p>
+
+        <p>
+            ztrm.net is a static .NET 8 Razor Pages web app, using PostgreSQL as a DB. It runs on an Ubuntu server with Nginx as a reverse proxy web server.
+            I use <a target="_blank" href="https://www.cloudflare.com">Cloudflare</a> as a Domain Registrar, DNS Provider, HTTP/S traffic proxying service, and as a Web Application Firewall.
+            Even though Cloudflare is a large for-profit tech company, they are genuinely privacy-focused and provide these services for free.
+            Domain names they sell at cost, which means they only charge the ICANN fee for domain registration.
+            I highly recommend Cloudflare's platform to anyone looking to host websites or email servers on their own.
+            The extra level of security they provide is valuable in the extremely dangerous world of the modern internet.
+        </p>
+
+        <p>
+            More recently, I've been learning <a target="_blank" href="https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor">Blazor</a>, specifically Blazor Server, for Single Page Application (SPA) web development.
+            Instead of learning one of the major traditional JS SPA frameworks like Angular and React, as a C#/.NET developer, I chose to learn Blazor as an introduction to SPA development, and I am very impressed.
+            Blazor is simply a superior way of doing web development for C# web developers. It is extremely powerful and flexible.
+            Whether you are building a simple static website or a highly interactive website, Blazor simply makes web development easier than Razor Pages or MVC.
+            Blazor vastly reduces the amount of JS needed to build a website, even a highly dynamic one.
+            Blazor Server uses WebSockets and an efficient diffing engine to quickly update dynamic websites while keeping everything server-side.
+            Blazor WebAssembly offers the exciting possibility to run a .NET web app as a true client-side SPA by running the app in WebAssembly on the client and then using API controllers to provide data services to the client-side app—
+            all while avoiding the slow and interpreted nature of JS.
+            I firmly believe all .NET web developers should be using Blazor, and I hope that the tyrannical dominance of Angular will lessen in the coming years to allow Blazor a more prominent spot in the web development world that it deserves.
+        </p>
+
+        <span>Below are some other websites I've made and operate:</span>
+        <ul>
+
+            <li><a href="https://dallevamechanical.com" target="_blank">DallevaMechanical.com</a> - Simple .NET 8 Razor Pages web app I made for my cousin's HVAC company</li>
+
+            <!-- possible future public Blazor website <li></li> -->
+
+
+
+        </ul>
+    </div>
+
 </div>

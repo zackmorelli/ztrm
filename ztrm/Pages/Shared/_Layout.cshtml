@@ -5,6 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>@ViewData["Title"]</title>
         <meta name="description" content="ztrm.net is the personal website of Zackary Thomas Ricci Morelli, .NET web developer and physicist specializing in Blazor, PostgreSQL, and high-performance web applications.">
+        <meta name="author" content="Zackary Thomas Ricci Morelli">
+        <meta name="keywords" content=".NET, C#, ASP.NET, Blazor, .NET web development, ASP.NET Core, .NET Core, SQL Server, PostgreSQL, LINQ, Entity Framework, MVC, Razor Pages, Windows Server, IIS, Ubuntu, Nginx, Git, ztrm, Zackary Morelli, Zackary Thomas Ricci Morelli"/>
+
+
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
         <!--local CSS stylesheets -->
         <link rel="stylesheet" href="~/css/layout.css"/>
@@ -41,12 +46,20 @@
         <footer id="layoutFooter" class="container-fluid footer fixed-bottom">
             <div class="flex-col-container  row">
                 <div id="adaptiveFooterContainer" class="flex-row-container" style="align-content: center;">
-                    <div id="footerText" class="flex-row-container" style="padding-left: 5px; padding-right: 5px; min-width: 202.77px; align-items: center;">
+                    
+                    <div id="footerText" class="flex-row-container footer-powered-by" style="padding-left: 5px; padding-right: 5px; min-width: 202.77px; align-items: center;">
                         <span>This website is powered by:</span>
                     </div>
 
+                    <div class="privacy-policy-hidden privacy-policy-subheader" style="padding-left: 5px;">
+                        <div>
+                            &copy; 2024 - Zackary T. Morelli - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                        </div>
+                    </div>
+
+
                     <div style="justify-content: space-around;" class="flex-row-container">
-                        <div class="flex-row-container">
+                        <div class="flex-row-container footer-powered-by">
                             <div id="firstFooterImage" class="col">
                                 <a target="_blank" href="https://ubuntu.com/">
                                     <img src="~/images/Ubuntu-Emblem_edited.png" alt="Ubuntu logo" />
@@ -102,8 +115,8 @@
                     </div>
                 </div>
 
-                <div class="row" style="padding-left: 5px; padding-top: 5px;">
-                    <div class="col">
+                <div class="privacy-policy-subheader footer-powered-by" style="padding-left: 5px; padding-top: 5px;">
+                    <div>
                         &copy; 2024 - Zackary T. Morelli - <a asp-area="" asp-page="/Privacy">Privacy</a>
                     </div>
                 </div>
