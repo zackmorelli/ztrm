@@ -3,12 +3,10 @@
 @model ztrm.Pages.RandomThoughtsPageModel
 
 @{
-    ViewData["Title"] = "ztrm - Random Thoughts";
+    ViewData["Title"] = "ztrm.net - Random Thoughts";
 }
 
-
 <div class="flex-col-container main-container">
-
 
     @foreach (RandomThoughtsCategoryLookup category in Model.RandomThoughtsCategories)
     {
@@ -18,14 +16,10 @@
             {
                 //string randomThoughtInfo = randomThought.Title + " - " + randomThought.PublishedDate.ToShortDateString();
 
-                <li><a href="@Url.Page("/RandomThought", new { postId = randomThought.postid })" target="_blank">@randomThought.title</a> - @randomThought.publisheddate.ToShortDateString()</li>
-                        
+                <li><a href="@Url.Page("/RandomThought", new { postId = randomThought.postid })" target="_blank">@randomThought.title</a> - @randomThought.publisheddate.ToShortDateString()</li>     
             }
-
         </ul>
-        
     }
-
 
 </div>
 
