@@ -81,6 +81,16 @@ nav {
     justify-content: center;
 }
 
+.image-container-about-me {
+    display: flex;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
 .coolText {
     font-family: 'Goudy Bookletter 1911', serif;
 }
@@ -102,6 +112,11 @@ nav {
 
 .privacy-policy-hidden {
     display: none;
+}
+
+.aboutMePicturesContainer {
+    gap: 7px;
+    padding-bottom: 7px;
 }
 
 
