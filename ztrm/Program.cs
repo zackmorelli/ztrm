@@ -9,7 +9,6 @@ using Audit.WebApi;
 
 using ztrm.Models;
 using ztrm.Services.Audit;
-using ztrm.Services.Interfaces;
 using ztrm.Services;
 
 
@@ -51,9 +50,21 @@ try
     builder.Services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
     builder.Services.AddRazorPages();
     builder.Services.AddHttpContextAccessor();
+    builder.Services.AddMemoryCache();
 
     //Custom Services
     builder.Services.AddScoped<IRandomThoughtsService, RandomThoughtsService>();
+
+    builder.Services.AddOptions<NasaOptions>()
+    .Bind(builder.Configuration.GetSection("Nasa"))
+    .ValidateDataAnnotations()
+    .Validate(o => !string.IsNullOrWhiteSpace(o.ApiKey), "Nasa:ApiKey is required.");
+
+    builder.Services.AddHttpClient<INasaService, NasaService>(c =>
+    {
+        c.BaseAddress = new Uri("https://api.nasa.gov/");
+        c.Timeout = TimeSpan.FromSeconds(10);
+    });
 
 
 
