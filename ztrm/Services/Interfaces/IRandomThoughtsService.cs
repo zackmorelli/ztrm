@@ -1,6 +1,6 @@
 ﻿using ztrm.Models.RandomThoughts;
 
-namespace ztrm.Services.Interfaces
+namespace ztrm.Services
 {
     public interface IRandomThoughtsService
     {

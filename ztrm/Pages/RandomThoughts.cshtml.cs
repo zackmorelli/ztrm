@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
 using ztrm.Services;
-using ztrm.Services.Interfaces;
 using ztrm.Models.RandomThoughts;
 
 namespace ztrm.Pages
