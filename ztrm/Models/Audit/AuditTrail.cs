@@ -4,67 +4,86 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ztrm.Models.Audit
 {
-    [Table("audittrail", Schema = "public")]
+    [Table("audit_trail", Schema = "public")]
     public class AuditTrail
     {
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long audittrailid { get; set; }
+        [Column("id")]
+        public long Id { get; set; }
 
         [Required]
-        public DateTime timestamp { get; set; }
+        [Column("time_stamp")]
+        public DateTimeOffset Timestamp { get; set; }
 
         [Required]
         [MaxLength(39)]
-        public string ipaddress { get; set; }
+        [Column("ip_address")]
+        public string IpAddress { get; set; } = null!;
 
         [Required]
         [MaxLength(10)]
-        public string httpmethod { get; set; }
+        [Column("http_method")]
+        public string HttpMethod { get; set; } = null!;
 
         [Required]
         [MaxLength(2048)]
-        public string requesturl { get; set; }
+        [Column("request_url")]
+        public string RequestUrl { get; set; } = null!;
 
         [Required]
         [Range(100, 599)]
-        public int responsestatuscode { get; set; }
+        [Column("response_status_code")]
+        public int ResponseStatusCode { get; set; }
 
         [Required]
-        public int durationmilliseconds { get; set; }
+        [Column("duration_milli_seconds")]
+        public int DurationMilliseconds { get; set; }
 
         [MaxLength(256)]
-        public string username { get; set; }
+        [Column("user_name")]
+        public string? UserName { get; set; }
 
         [MaxLength(512)]
-        public string useragent { get; set; }
+        [Column("user_agent")]
+        public string? UserAgent { get; set; }
 
-        [MaxLength(3000)]
-        public string requestbody { get; set; }
+        [MaxLength(2000)]
+        [Column("request_body")]
+        public string? RequestBody { get; set; }
 
-        [MaxLength(3000)]
-        public string responsebody { get; set; }
+        [MaxLength(2000)]
+        [Column("response_body")]
+        public string? ResponseBody { get; set; }
 
         [MaxLength(128)]
-        public string sessionid { get; set; }
+        [Column("session_id")]
+        public string? SessionId { get; set; }
 
         [MaxLength(2048)]
-        public string referrerurl { get; set; }
+        [Column("referrer_url")]
+        public string? ReferrerUrl { get; set; }
 
-        [MaxLength(3000)]
-        public string requestheaders { get; set; }
+        [MaxLength(1000)]
+        [Column("request_headers")]
+        public string? RequestHeaders { get; set; }
 
-        [MaxLength(3000)]
-        public string responseheaders { get; set; }
+        [MaxLength(1000)]
+        [Column("response_headers")]
+        public string? ResponseHeaders { get; set; }
 
-        [MaxLength(3000)]
-        public string exception { get; set; }
+        [MaxLength(1000)]
+        [Column("exception")]
+        public string? Exception { get; set; }
 
         [MaxLength(256)]
-        public string actionname { get; set; }
+        [Column("action_name")]
+        public string? ActionName { get; set; }
 
         [MaxLength(256)]
-        public string controllername { get; set; }
+        [Column("controller_name")]
+        public string? ControllerName { get; set; }
 
     }
 }
