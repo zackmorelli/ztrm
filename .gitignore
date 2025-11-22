@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /ztrm/wwwroot/videos/toby.mp4
+/ztrm/wwwroot/videos/toby_1080p.mp4
+/ztrm/wwwroot/videos/toby_1080p.webm
