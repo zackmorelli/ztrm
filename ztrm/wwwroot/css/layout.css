@@ -110,6 +110,48 @@ nav {
     justify-content: center;
 }
 
+.homePageTextContainer {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.homePagePictureContainer {
+    flex: 1;
+    max-width: 33%;
+    align-items: flex-start;
+    min-width: 200px;
+    gap: 7px;
+    padding-bottom: 7px;
+}
+
+.rounded-image-with-shadow {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #b3b3b3;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container-about-me {
+    display: flex;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
 .coolText {
     font-family: 'Goudy Bookletter 1911', serif;
 }

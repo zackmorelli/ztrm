@@ -1,8 +1,18 @@
 ﻿using Audit.Core;
 using Audit.WebApi;
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+
 using ztrm.Models;
 using ztrm.Models.Audit;
+using Audit.WebApi;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Components.RenderTree;
+
+
+
 
 
 namespace ztrm.Services.Audit
@@ -31,8 +41,8 @@ namespace ztrm.Services.Audit
         {
             AuditApiAction auditApiAction = auditEvent.GetWebApiAuditAction();
             string? referrerUrl;
-
-            if (auditApiAction.Headers.ContainsKey("Referer") == true)
+            
+            if (auditApiAction.Headers.ContainsKey("Referer") == true) 
             {
                 referrerUrl = string.Create(Math.Min(2048, auditApiAction.Headers["Referer"].Length), auditApiAction.Headers["Referer"], (span, input) => input.AsSpan(0, Math.Min(2048, input.Length)).CopyTo(span));
             }
@@ -40,7 +50,7 @@ namespace ztrm.Services.Audit
             {
                 referrerUrl = null;
             }
-
+            
             string? requestHeaders = string.Join(", ", auditEvent.Environment.CustomFields.Select(kvp => $"{kvp.Key}: {kvp.Value}"));
             string? responseHeaders = string.Join(", ", auditApiAction.ResponseHeaders.Select(kvp => $"{kvp.Key}: {kvp.Value}"));
 

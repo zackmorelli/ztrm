@@ -107,6 +107,12 @@ try
     });
 
 
+    app.UseForwardedHeaders(new ForwardedHeadersOptions
+    {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+    });
+
+
     // Add Audit.NET middleware to audit all requests
     app.UseAuditMiddleware(config => config
      .FilterByRequest(req => !req.Path.StartsWithSegments("/health")) // Ignore health check requests
