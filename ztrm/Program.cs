@@ -1,15 +1,14 @@
-using Microsoft.EntityFrameworkCore;
-using System.Globalization;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 
-using NLog.Web;
-using NLog;
+using Audit.Core;
 using Audit.WebApi;
+using NLog;
+using NLog.Web;
 
 using ztrm.Models;
-using ztrm.Services.Audit;
 using ztrm.Services;
+using ztrm.Services.Audit;
 
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -43,14 +42,23 @@ try
     builder.Services.AddDbContext<ZTRMContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("ZTRMContext")));
 
     //We also need to make the separate DBContext for the audit logs
-    builder.Services.AddDbContext<AuditDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("ZTRMContext")));
+    builder.Services.AddDbContext<AuditDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("ZTRMContext")), ServiceLifetime.Scoped);
 
+    //.NET Services
     //So Services config for cookies and Authentication and Authorization should go here if we want it.
-
     builder.Services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
     builder.Services.AddRazorPages();
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddMemoryCache();
+
+    //services for the audit DB context. this ensures DB concurrency issues don't occur.
+    builder.Services.AddScoped<GenericAuditDataProvider>();
+    builder.Services.AddSingleton<AuditDataProvider>(sp =>
+    {
+        var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
+        return new GenericAuditDataProvider(scopeFactory);
+    });
+
 
     //Custom Services
     builder.Services.AddScoped<IRandomThoughtsService, RandomThoughtsService>();
@@ -75,7 +83,7 @@ try
     app.UseMiddleware<ztrm.Middleware.ErrorLogger>();
 
     // Configure Audit.NET to use our custom data provider
-    Audit.Core.Configuration.DataProvider = new GenericAuditDataProvider(app.Services.CreateScope().ServiceProvider.GetService<AuditDbContext>());
+    Audit.Core.Configuration.DataProvider = builder.Services.BuildServiceProvider().GetRequiredService<AuditDataProvider>();
 
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
@@ -89,22 +97,9 @@ try
         app.UseDeveloperExceptionPage();
     }
 
-    List<CultureInfo> cultureInfoList = new List<CultureInfo>();
-    cultureInfoList.Add(new CultureInfo("en-US"));
-
-    RequestLocalizationOptions localizationOptions = new RequestLocalizationOptions
-    {
-        DefaultRequestCulture = new RequestCulture("en-US"),
-        SupportedCultures = cultureInfoList,
-        SupportedUICultures = cultureInfoList
-    };
-    CookieRequestCultureProvider cultureProvider = localizationOptions.RequestCultureProviders.OfType<CookieRequestCultureProvider>().First();
-
-    app.UseRequestLocalization(localizationOptions);
     app.UseHttpsRedirection();
     app.UseStaticFiles();
     app.UseRouting();
-    app.UseAuthorization();
 
     app.UseForwardedHeaders(new ForwardedHeadersOptions
     {
